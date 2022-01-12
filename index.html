@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
@@ -13,23 +14,41 @@
     
      
      
-    <input type="text" id="resturant" placeholder="enter a milkshake">
-    <select name="type" id="addCatergory">
+    
+   
+    <button  data-bs-toggle="modal" data-bs-target="#adding" class="btn btn-primary">Add a new milkshake</button>
+    <div class="modal fade" id="adding" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Adding a new milkshake</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="price" placeholder="enter price in (R)">
+                <select name="type" id="addCatergory">
         
-        <option value="Vanilla special.">Vanilla special.</option>
-        <option value="Strawberry marshallow."> Strawberry marshallow.</option>
-        <option value="Cool mint."> Cool mint.</option>
-        <option value="Blueberry cheesecake.">Blueberry cheesecake.</option>
-        <option value="Raspberry and white chocolate.">  Raspberry and white chocolate.</option>
-        <option value="Triple nut caramel.">Triple nut caramel.</option>
-        <option value="Pina colada.">strawberry milkshake</option>
-        <option value="Pina colada.">Freak Rambling Litchi shake</option>
-        <option value="Pina colada.">Oreo dark chocolate milkshake</option>
-        <option value="Pina colada.">Roman creams&caramel milkshake</option>
-        
-
-    </select>
-    <button onclick="createProduct()">Add</button>
+                    <option value="Vanilla special.">Vanilla special.</option>
+                    <option value="Strawberry marshallow."> Strawberry marshallow.</option>
+                    <option value="Cool mint."> Cool mint.</option>
+                    <option value="Blueberry cheesecake.">Blueberry cheesecake.</option>
+                    <option value="Raspberry and white chocolate.">  Raspberry and white chocolate.</option>
+                    <option value="Triple nut caramel.">Triple nut caramel.</option>
+                    <option value="Pina colada.">strawberry milkshake</option>
+                    <option value="Pina colada.">Freak Rambling Litchi shake</option>
+                    <option value="Pina colada.">Oreo dark chocolate milkshake</option>
+                    <option value="Pina colada.">Roman creams&caramel milkshake</option>
+                </select>
+                <input type="text" id="resturant" placeholder="enter img url">
+                <input type="text" id="title" placeholder="title">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button  data-bs-dismiss="modal" onclick="createProduct()" type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="container">
         <div class="row" id="milk"></div>
     </div>
