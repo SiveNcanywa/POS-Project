@@ -1,44 +1,67 @@
-let products=[{
+
+let products=JSON.parse(localStorage.getItem("products"))?JSON.parse(localStorage.getItem("products")) :[{
     title:"Oreo dark chocolate milkshake",
     catergory:" beverage",
-    price:"R49.99",
+    price:"49.99",
     img:"https://i.postimg.cc/pTVP76FH/spur.jpg",
     
 },
 {
     title:"Freak Rambling Litchi shake",
     catergory:" beverage",
-    price:"R105.85",
+    price:"105.85",
     img:"https://i.postimg.cc/4xnL8bdS/roco.jpg",
     
 },
 {
     title: "strawberry milkshake",
     catergory:" beverage",
-    price:"R69.70",
+    price:"69.70",
     img:"https://i.postimg.cc/nVP0X9TK/primi.jpg",
     
 },
 {
     title:"Roman creams&caramel milkshake",
     catergory:" beverage",
-    price:"R65.51",
+    price:"65.51",
     img:" https://i.postimg.cc/T1dMpYZS/steers.jpg",
 } 
 ];
+let cart =JSON.parse(localStorage.getItem("cart"))?JSON.parse(localStorage.getItem("cart")):[];
+
+
+
+
 function displayProduct(products){
     document.getElementById("milk").innerHTML = "";
 
     products.forEach((products, position) => {
 
         document.getElementById("milk").innerHTML += `
-        <div class="col-6 col-sm-4" ><div class="card" style="width: 18rem;">
+
+
+
+
+
+
+
+
+
+
+
+        <div class="col-6 col-sm-4" >
+        <div class="card" >
             <img src="${products.img}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">${products.title}</h5>
               <p class="card-text">${products.price}</p>
+              <div class="d-flex mb-3">
+              <input type="number" class="form-control" value=1 min=1 id="addToCart${position}">
+              <button type="button" class="btn btn-secondary ms-3" onclick="addToCart(${position})">add</button>
+              </div>
               <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-modal-${position}" >Update</button>
               <button onclick="deleteProduct(${position})"  class="btn btn-danger">Delete</button>
+              
             </div>
           </div>
 
@@ -81,6 +104,7 @@ function displayProduct(products){
     });
 }
 displayProduct(products);
+// showCartBadge();       
 
 function createProduct(){
   // let myProduct = document.getElementById("milk").value;
@@ -129,5 +153,30 @@ function updateProduct(position){
       displayProduct(products);
   
 }
+ function addToCart(position){
+   let qty = document.querySelector(`#addToCart${position}`).value;
+   let added= false;
+   cart.forEach((product)=>{
+     if(product.title==products[position].title) {
+       alert(
+         `You have successfully added ${qty} ${products[position].title} to the cart`
+       );
+       product.qty= parseInt(product.qty) + parseInt(qty);
+       added=true;
+     }
+   });
+   if(!added){
+     cart.push({ ...products[position],qty});
+     alert(`You have successfully added${qty} ${products[position].title}to the cart`);
+   }
 
+  //  showCartBadge();
+   localStorage.setItem("cart",JSON.stringify(cart));
+  
+ }
+
+//  function showCartBadge() {
+//    document.querySelector("").innerHTML=cart?cart.length:"";
+   
+//  }
 
