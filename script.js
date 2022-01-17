@@ -1,54 +1,40 @@
+let products = JSON.parse(localStorage.getItem("products"))
+  ? JSON.parse(localStorage.getItem("products"))
+  : [
+      {
+        title: "Oreo dark chocolate milkshake",
+        catergory: "beverage",
+        price: "49.99",
+        img: "https://i.postimg.cc/pTVP76FH/spur.jpg",
+      },
+      {
+        title: "Freak Rambling Litchi shake",
+        catergory: "beverage",
+        price: "105.85",
+        img: "https://i.postimg.cc/4xnL8bdS/roco.jpg",
+      },
+      {
+        title: "strawberry milkshake",
+        catergory: "beverage",
+        price: "69.70",
+        img: "https://i.postimg.cc/nVP0X9TK/primi.jpg",
+      },
+      {
+        title: "Roman creams&caramel milkshake",
+        catergory: "beverage",
+        price: "65.51",
+        img: " https://i.postimg.cc/T1dMpYZS/steers.jpg",
+      },
+    ];
+let cart = JSON.parse(localStorage.getItem("cart"))
+  ? JSON.parse(localStorage.getItem("cart"))
+  : [];
 
-let products=JSON.parse(localStorage.getItem("products"))?JSON.parse(localStorage.getItem("products")) :[{
-    title:"Oreo dark chocolate milkshake",
-    catergory:" beverage",
-    price:"49.99",
-    img:"https://i.postimg.cc/pTVP76FH/spur.jpg",
-    
-},
-{
-    title:"Freak Rambling Litchi shake",
-    catergory:" beverage",
-    price:"105.85",
-    img:"https://i.postimg.cc/4xnL8bdS/roco.jpg",
-    
-},
-{
-    title: "strawberry milkshake",
-    catergory:" beverage",
-    price:"69.70",
-    img:"https://i.postimg.cc/nVP0X9TK/primi.jpg",
-    
-},
-{
-    title:"Roman creams&caramel milkshake",
-    catergory:" beverage",
-    price:"65.51",
-    img:" https://i.postimg.cc/T1dMpYZS/steers.jpg",
-} 
-];
-let cart =JSON.parse(localStorage.getItem("cart"))?JSON.parse(localStorage.getItem("cart")):[];
+function displayProduct(products) {
+  document.getElementById("milk").innerHTML = "";
 
-
-
-
-function displayProduct(products){
-    document.getElementById("milk").innerHTML = "";
-
-    products.forEach((products, position) => {
-
-        document.getElementById("milk").innerHTML += `
-
-
-
-
-
-
-
-
-
-
-
+  products.forEach((products, position) => {
+    document.getElementById("milk").innerHTML += `
         <div class="col-6 col-sm-4" >
         <div class="card" >
             <img src="${products.img}" class="card-img-top" alt="...">
@@ -57,7 +43,7 @@ function displayProduct(products){
               <p class="card-text">${products.price}</p>
               <div class="d-flex mb-3">
               <input type="number" class="form-control" value=1 min=1 id="addToCart${position}">
-              <button type="button" class="btn btn-secondary ms-3" onclick="addToCart(${position})">add</button>
+              <button type="button" class="btn btn-secondary ms-3" onclick="addToCart(${position})">Add</button>
               </div>
               <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-modal-${position}" >Update</button>
               <button onclick="deleteProduct(${position})"  class="btn btn-danger">Delete</button>
@@ -101,82 +87,120 @@ function displayProduct(products){
 
       
         `;
-    });
+  });
 }
 displayProduct(products);
-// showCartBadge();       
+// showCartBadge();
 
-function createProduct(){
+function createProduct() {
   // let myProduct = document.getElementById("milk").value;
   let catergory = document.getElementById("addCatergory").value;
-  let price=document.getElementById("price").value;
-  let img=document.getElementById("resturant").value;
-  let title=document.getElementById("title").value;
+  let price = document.getElementById("price").value;
+  let img = document.getElementById("resturant").value;
+  let title = document.getElementById("title").value;
 
-  
   try {
-      // if(!myProduct)throw new Error("")
-      products.push({
-        catergory,
-        price,
-        img,
-        title,
-        });
-      displayProduct(products);
+    // if(!myProduct)throw new Error("")
+    products.push({
+      catergory,
+      price,
+      img,
+      title,
+    });
+    localStorage.setItem("products", JSON.stringify(products));
+    displayProduct(products);
   } catch (error) {
-      
-      alert(error)
+    alert(error);
   }
 }
 
-function deleteProduct(position){
+function deleteProduct(position) {
   products.splice(position, 1);
+  localStorage.setItem("products", JSON.stringify(products));
   displayProduct(products);
 }
 
-
-function updateProduct(position){
+function updateProduct(position) {
   // let product = document.querySelector(`#update-input-${position}`).value;
-  let price= document.querySelector(`#update-price-${position}`).value;
-  let cartegory=document.querySelector(`#update-cartegory-${position}`).value;
-  let img=document.querySelector(`#update-img-${position}`).value;
-  let title=document.querySelector(`#update-title-${position}`).value;
+  let price = document.querySelector(`#update-price-${position}`).value;
+  let cartegory = document.querySelector(`#update-cartegory-${position}`).value;
+  let img = document.querySelector(`#update-img-${position}`).value;
+  let title = document.querySelector(`#update-title-${position}`).value;
+  try {
+    if (!img.startsWith("https")) throw "invalid image link";
+    products[position] = {
+      cartegory,
+      price,
+      img,
+      title,
+    };
+    localStorage.setItem("products", JSON.stringify(products));
 
-
-  products[position] = {
-    cartegory,
-    price,
-    img,
-    title,
-
+    displayProduct(products);
+  } catch (error) {
+    alert(error);
   }
-      displayProduct(products);
-  
 }
- function addToCart(position){
-   let qty = document.querySelector(`#addToCart${position}`).value;
-   let added= false;
-   cart.forEach((product)=>{
-     if(product.title==products[position].title) {
-       alert(
-         `You have successfully added ${qty} ${products[position].title} to the cart`
-       );
-       product.qty= parseInt(product.qty) + parseInt(qty);
-       added=true;
-     }
-   });
-   if(!added){
-     cart.push({ ...products[position],qty});
-     alert(`You have successfully added${qty} ${products[position].title}to the cart`);
-   }
+function addToCart(position) {
+  let qty = document.querySelector(`#addToCart${position}`).value;
+  let added = false;
+  cart.forEach((product) => {
+    if (product.title == products[position].title) {
+      alert(
+        `You have successfully added ${qty} ${products[position].title} to the cart`
+      );
+      product.qty = parseInt(product.qty) + parseInt(qty);
+      added = true;
+    }
+  });
+  if (!added) {
+    cart.push({ ...products[position], qty });
+    alert(
+      `You have successfully added${qty} ${products[position].title}to the cart`
+    );
+  }
 
   //  showCartBadge();
-   localStorage.setItem("cart",JSON.stringify(cart));
-  
- }
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
 
 //  function showCartBadge() {
 //    document.querySelector("").innerHTML=cart?cart.length:"";
-   
-//  }
 
+//
+
+function sortCatergory() {
+  let catergory = document.querySelector("#sortCatergory").value;
+
+  if (catergory == "All") {
+    return displayProduct(products);
+  }
+  let foundProducts = products.filter((product) => {
+    return product.catergory == catergory;
+  });
+  displayProduct(foundProducts);
+  console.log(foundProducts);
+}
+function sortName() {
+  let direction = document.querySelector("#sortName").value;
+  let sortedProducts = products.sort((a, b) => {
+    if (a.title.toLowerCase() < b.title.toLowerCase()) {
+      return -1;
+    }
+    if (a.title.toLowerCase() > b.title.toLowerCase()) {
+      return 1;
+    }
+    return 0;
+  });
+  if (direction == "descending") sortedProducts.reverse();
+  console.log(sortedProducts);
+
+  displayProduct(products);
+}
+function sortPrice() {
+  let direction = document.querySelector("#sortPrice").value;
+  let sortedProducts = products.sort((a, b) => a.price - b.price);
+  console.log(sortedProducts);
+  if (direction == "descending") sortedProducts.reverse();
+  displayProduct(sortedProducts);
+}
