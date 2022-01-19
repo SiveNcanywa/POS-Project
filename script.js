@@ -25,6 +25,60 @@ let products = JSON.parse(localStorage.getItem("products"))
         price: "65.51",
         img: " https://i.postimg.cc/MKc7yLNQ/Choc-Milk-Shake-June-2012-36b.jpg",
       },
+      {
+        title: "cheese burger",
+        catergory: "burger",
+        price: "95.20",
+        img: "https://i.postimg.cc/Px4v1gm1/cheese.jpg",
+      },
+      {
+        title: "chicken burger",
+        catergory: "burger",
+        price: "125.56",
+        img: "https://i.postimg.cc/76WwvX4p/chicken.jpg",
+      },
+      {
+        title: "beef burger",
+        catergory: "burger",
+        price: "155.56",
+        img: "https://i.postimg.cc/JzMn56zq/beef.jpg",
+      },
+      {
+        title: "Beer",
+        catergory: "liquor",
+        price: "50.00",
+        img: "https://i.postimg.cc/SxF8FfN2/beer.jpg",
+      },
+      {
+        title: "Whisky",
+        catergory: "liquor",
+        price: "140.00",
+        img: "https://i.postimg.cc/3JPjrH9w/whisky.jpg",
+      },
+      {
+        title: "Cider",
+        catergory: "liquor",
+        price: "70.42",
+        img: "https://i.postimg.cc/Px2zdpFG/cider.jpg",
+      },
+      {
+        title: "steak",
+        catergory: "food",
+        price: "230.12",
+        img: "https://i.postimg.cc/hvRzWSKF/steak.jpg",
+      },
+      {
+        title: "chicken",
+        catergory: "food",
+        price: "190.12",
+        img: "https://i.postimg.cc/6pfDCz8C/grilled.jpg",
+      },
+      {
+        title: "soda drinks",
+        catergory: "drinks",
+        price: "25.00",
+        img: "https://i.postimg.cc/kgYyrtZk/drinks.jpg",
+      },
     ];
 let cart = JSON.parse(localStorage.getItem("cart"))
   ? JSON.parse(localStorage.getItem("cart"))
