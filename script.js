@@ -2,28 +2,28 @@ let products = JSON.parse(localStorage.getItem("products"))
   ? JSON.parse(localStorage.getItem("products"))
   : [
       {
-        title: "Oreo dark chocolate milkshake",
-        catergory: "beverage",
+        title: "custard milkshake",
+        catergory: "milkshake",
         price: "49.99",
-        img: "https://i.postimg.cc/pTVP76FH/spur.jpg",
+        img: "https://i.postimg.cc/qR3ttfzJ/custard.jpg",
       },
       {
-        title: "Freak Rambling Litchi shake",
-        catergory: "beverage",
+        title: "vannila milkshake",
+        catergory: "milkshake",
         price: "105.85",
-        img: "https://i.postimg.cc/4xnL8bdS/roco.jpg",
+        img: "https://i.postimg.cc/RFyc8QnF/Vanilla-Milkshake-4-of-7.jpg",
       },
       {
         title: "strawberry milkshake",
-        catergory: "beverage",
+        catergory: "milkshake",
         price: "69.70",
-        img: "https://i.postimg.cc/nVP0X9TK/primi.jpg",
+        img: "https://i.postimg.cc/6QDJpgkf/Strawberry-Milkshake4.jpg",
       },
       {
-        title: "Roman creams&caramel milkshake",
-        catergory: "beverage",
+        title: "chocolate milkshake",
+        catergory: "milkshake",
         price: "65.51",
-        img: " https://i.postimg.cc/T1dMpYZS/steers.jpg",
+        img: " https://i.postimg.cc/MKc7yLNQ/Choc-Milk-Shake-June-2012-36b.jpg",
       },
     ];
 let cart = JSON.parse(localStorage.getItem("cart"))
@@ -60,16 +60,13 @@ function displayProduct(products) {
             </div>
             <div class="modal-body">
               <select name="type" id="update-cartegory-${position}" placeholder="cartegory">
-              <option value="Vanilla special.">Vanilla special.</option>
-                    <option value="Strawberry marshallow."> Strawberry marshallow.</option>
-                    <option value="Cool mint."> Cool mint.</option>
-                    <option value="Blueberry cheesecake.">Blueberry cheesecake.</option>
-                    <option value="Raspberry and white chocolate.">  Raspberry and white chocolate.</option>
-                    <option value="Triple nut caramel.">Triple nut caramel.</option>
-                    <option value="Pina colada.">strawberry milkshake</option>
-                    <option value="Pina colada.">Freak Rambling Litchi shake</option>
-                    <option value="Pina colada.">Oreo dark chocolate milkshake</option>
-                    <option value="Pina colada.">Roman creams&caramel milkshake</option>
+              <
+                    option value="Milkshake">Milkshake</>
+                    <option value="liquor"> Liquor</option>
+                    <option value="Burger"> Burger</option>
+                    <option value="Steak">Steak</option>
+                    <option value="Chicken">  Chicken</option>
+                    <option value="Drinks">Drinks</option>
               </select>
               <input type="text" id="update-price-${position}"placeholder="price"/>
               <input type="text" id="update-title-${position}"placeholder="title"/>
