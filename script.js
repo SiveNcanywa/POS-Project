@@ -138,6 +138,14 @@ function displayProduct(products) {
 
       
         `;
+    let totalQty = 0;
+
+    cart.forEach((item) => {
+      totalQty += parseInt(item.qty);
+    });
+    if (totalQty != 0) {
+      document.querySelector("#badge").innerHTML = totalQty;
+    }
   });
 }
 displayProduct(products);

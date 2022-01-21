@@ -11,3 +11,13 @@ img {
   height: 350px;
   object-fit: cover;
 }
+#badge {
+  background-color: red;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  text-align: center;
+}
