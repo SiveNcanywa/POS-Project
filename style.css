@@ -1,15 +1,13 @@
-*{
-    margin: 0;
-
+* {
+  margin: 0;
 }
-body{
-    background-image: url(https://w0.peakpx.com/wallpaper/677/135/HD-wallpaper-pink-milkshake-beverages-color-colores-food-geometric-minimal-minimalism-pattern-strawberry.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    object-fit: cover;
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
 }
-img{
-    width: 700px;
-    height: 350px;
-    object-fit: cover;
+img {
+  width: 700px;
+  height: 350px;
+  object-fit: cover;
 }
